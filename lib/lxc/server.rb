@@ -1,25 +1,14 @@
 require 'sinatra/base'
 require 'multi_json'
+require 'lxc/server/version'
+require 'lxc/server/helpers'
 
 module LXC
   class Server < Sinatra::Base
     set :environment, ENV['RACK_ENV'] || 'production'
 
     helpers do
-      def json_response(data)
-        MultiJson.encode(data)
-      end
-      
-      def error_response(error, status=400)
-        halt(400, json_response(:error => error))
-      end
-
-      def find_container
-        @container = LXC.container(params[:c_name])
-        unless @container.exists?
-          error_response("Container #{params[:c_name]} does not exist")
-        end
-      end
+      include LXC::ServerHelpers
     end
     
     before do
@@ -37,12 +26,8 @@ module LXC
       json_response(:error => "Invalid request path")
     end
     
-    get '/' do
-      json_response({'time' => Time.now})
-    end
-    
     get '/version' do
-      json_response('version' => LXC::VERSION)
+      json_response('version' => LXC::SERVER_VERSION)
     end
 
     get '/lxc_version' do

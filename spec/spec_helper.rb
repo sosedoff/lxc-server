@@ -2,7 +2,6 @@ $:.unshift File.expand_path("../..", __FILE__)
 
 require 'rack/test'
 require 'json'
-
 require 'lxc'
 require 'lib/lxc/server'
 

@@ -2,7 +2,7 @@ require File.expand_path('../lib/lxc/server/version', __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "lxc-server"
-  s.version     = LXC::Server::VERSION
+  s.version     = LXC::SERVER_VERSION
   s.summary     = "API server for LXC"
   s.description = "Sinatra-based API for LXC container management"
   s.homepage    = "https://github.com/sosedoff/lxc-server"

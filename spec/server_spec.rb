@@ -1,18 +1,10 @@
 require 'spec_helper'
 
 describe LXC::Server do
-  it 'GET / returns some data' do
-    get '/'
-    last_response.status.should eq(200)
-    last_response.headers['Content-Type'].should match('application/json')
-    last_response.headers['Content-Type'].should match('utf8')
-    last_response.body.should_not be_empty
-  end
-
-  it 'GET /version returns gem version' do
+  it 'GET /version returns server version' do
     get '/version'
     last_response.should be_ok
-    parse_json(last_response.body)['version'].should eq(LXC::VERSION)
+    parse_json(last_response.body)['version'].should eq(LXC::SERVER_VERSION)
   end
 
   it 'GET /lxc_version returns installed LXC version' do
