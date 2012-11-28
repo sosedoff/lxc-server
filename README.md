@@ -35,7 +35,6 @@ Usage: lxc-server [options]
 
 General:
 
-    GET /                  # Get current time
     GET /version           # Current gem version
     GET /lxc_version       # Installed LXC version
     GET /containers        # Get container list 
