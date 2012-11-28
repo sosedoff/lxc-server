@@ -1,0 +1,2 @@
+state:   STOPPED
+pid:        -1
